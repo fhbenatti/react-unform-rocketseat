@@ -14,11 +14,19 @@ const initialData = {
 }
 
 function App() {
-  const [user, setUser] = useState({})
+  // const [user, setUser] = useState({})
   const formRef = useRef(null)
 
   useEffect(() => {
-    setTimeout(() => {}, 2000)
+    setTimeout(() => {
+      formRef.current.setData({
+        name: 'Fábio Benatti',
+        email: 'fhbenatti@gmail.com',
+        address: {
+          city: 'Piracicaba',
+        },
+      })
+    }, 2000)
   })
 
   async function handleSubmit(data, {reset}) {
@@ -70,7 +78,8 @@ function App() {
     <div className="App">
       <h1>Hello World</h1>
 
-      <Form ref={formRef} initialData={initialData} onSubmit={handleSubmit}>
+      {/* <Form ref={formRef} initialData={initialData} onSubmit={handleSubmit}> */}
+      <Form ref={formRef} onSubmit={handleSubmit}>
         <Input name="name" />
         {/* <Input type="email" name="email" /> */}
         <Input name="email" />
